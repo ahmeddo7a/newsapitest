@@ -5,6 +5,6 @@ class ArticleModel extends ArticleEntity{
 
   factory ArticleModel.fromJson(Map<String,dynamic> json) =>ArticleModel(
       title:  (json['title'] != null) ? json['title'] : 'empty',
-      imageUrl: (json['title'] != null) ? json['urlToImage'] : 'empty'
+      imageUrl: (json['urlToImage'] != null) ? json['urlToImage'] : 'empty'
   );
 }
