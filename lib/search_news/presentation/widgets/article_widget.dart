@@ -18,12 +18,12 @@ class ArticleWidget extends StatelessWidget {
         CachedNetworkImage(
             width: myWidth*0.3,
             height: myHeight*0.1,
-            imageUrl: article.imageUrl,
+            imageUrl: article.imageUrl!,
             fit: BoxFit.contain,
 
         ),
         SizedBox(width: myWidth*0.02,),
-        Expanded(child: Text(article.title,overflow: TextOverflow.ellipsis,))
+        Expanded(child: Text(article.title!,overflow: TextOverflow.ellipsis,))
       ],
     );
   }

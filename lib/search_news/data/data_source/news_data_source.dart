@@ -30,6 +30,8 @@ class NewsDataSource extends BaseNewsDataSource{
         throw ServerException(
             errorMessageModel: ErrorMessageModel.fromJson(e.response!.data));
       } else {
+        print(e.message);
+        print(e.error);
         throw ServerException(
             errorMessageModel:
             ErrorMessageModel.fromJson(const {'name': 'Server Error'}));

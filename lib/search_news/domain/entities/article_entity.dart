@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class ArticleEntity extends Equatable{
-  final String title;
-  final String imageUrl;
+  final String? title;
+  final String? imageUrl;
 
   const ArticleEntity({required this.title,required this.imageUrl});
 

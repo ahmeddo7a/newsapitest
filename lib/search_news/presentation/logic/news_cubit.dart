@@ -15,9 +15,8 @@ class NewsCubit extends Cubit<NewsState> {
   static NewsCubit get(context) => BlocProvider.of(context);
 
 
-  late List<ArticleEntity> finalArticleList;
-
-  late List<ArticleEntity> firstArticlesList;
+   List<ArticleEntity> finalArticleList=[];
+   List<ArticleEntity> firstArticlesList=[];
   void getFirstArticles({required String value}) async{
     emit(NewsInitial());
     if(value.isNotEmpty){
@@ -27,17 +26,20 @@ class NewsCubit extends Cubit<NewsState> {
         if(secondArticlesList.isEmpty){
           finalArticleList = firstArticlesList;
         } else{
-          finalArticleList.replaceRange(0, 2, firstArticlesList);
+          finalArticleList.addAll(firstArticlesList);
+            finalArticleList.replaceRange(0, 2, firstArticlesList);
+          finalArticleList.removeRange(finalArticleList.length-4, finalArticleList.length);
+
         }
         emit(NewsFirstListSuccess());
       });
     } else {
-      finalArticleList.removeRange(0, 2);
+      finalArticleList.removeRange(0, 3);
       emit(NewsFirstListSuccess());
     }
   }
 
-  late List<ArticleEntity> secondArticlesList;
+  List<ArticleEntity> secondArticlesList = [];
   void getSecondArticles({required String value}) async{
     emit(NewsInitial());
     if(value.isNotEmpty){
@@ -47,12 +49,14 @@ class NewsCubit extends Cubit<NewsState> {
         if(firstArticlesList.isEmpty){
           finalArticleList = secondArticlesList;
         }else {
+          finalArticleList.addAll(secondArticlesList);
           finalArticleList.replaceRange(3, 5, secondArticlesList);
+          finalArticleList.removeRange(6, finalArticleList.length);
         }
         emit(NewsSecondListSuccess());
       });
     } else {
-      finalArticleList.removeRange(3, 5);
+      finalArticleList.removeRange(3, 6);
       emit(NewsSecondListSuccess());
     }
   }
